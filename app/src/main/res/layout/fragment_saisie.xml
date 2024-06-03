@@ -21,19 +21,25 @@
         android:id="@+id/etDateNaissance"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Date de naissance" />
+        android:hint="Date de naissance"
+        android:inputType="none"
+        android:focusable="false"
+        android:clickable="true" />
+
 
     <EditText
         android:id="@+id/etTelephone"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Numéro de téléphone" />
+        android:hint="Numéro de téléphone"
+        android:inputType="phone" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Adresse mail" />
+        android:hint="Adresse mail"
+        android:inputType="textEmailAddress" />
 
     <CheckBox
         android:id="@+id/cbSport"
