@@ -1,0 +1,78 @@
+<!-- fragment_saisie.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etNom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Nom" />
+
+    <EditText
+        android:id="@+id/etPrenom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Prénom" />
+
+    <EditText
+        android:id="@+id/etDateNaissance"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Date de naissance" />
+
+    <EditText
+        android:id="@+id/etTelephone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Numéro de téléphone" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Adresse mail" />
+
+    <CheckBox
+        android:id="@+id/cbSport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sport" />
+
+    <CheckBox
+        android:id="@+id/cbMusique"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Musique" />
+
+    <CheckBox
+        android:id="@+id/cbLecture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lecture" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbSynchroniserOui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Synchroniser" />
+
+        <RadioButton
+            android:id="@+id/rbSynchroniserNon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ne pas synchroniser" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnSoumettre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Soumettre" />
+</LinearLayout>

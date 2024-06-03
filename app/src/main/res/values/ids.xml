@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_saisieFragment_to_confirmationFragment" type="id" />
+</resources>
