@@ -1,7 +1,8 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class ConfirmationFragment extends Fragment {
 
     private TextView tvConfirmation;
     private Button btnValider;
 
-    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,15 +58,54 @@ public class ConfirmationFragment extends Fragment {
                     "Synchronisation: " + (synchroniser ? "Oui" : "Non");
 
             tvConfirmation.setText(confirmationText);
+
+            btnValider.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        JSONObject json = new JSONObject();
+                        json.put("nom", nom);
+                        json.put("prenom", prenom);
+                        json.put("dateNaissance", dateNaissance);
+                        json.put("telephone", telephone);
+                        json.put("email", email);
+                        json.put("sport", sport);
+                        json.put("musique", musique);
+                        json.put("lecture", lecture);
+                        json.put("synchroniser", synchroniser);
+
+                        saveToFile(json.toString());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
-        btnValider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Données validées", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         return view;
+    }
+
+    private void saveToFile(String data) {
+        String fileName = "user_data.json";
+        FileOutputStream fos = null;
+        try {
+            File file = new File(getActivity().getFilesDir(), fileName);
+            fos = new FileOutputStream(file);
+            fos.write(data.getBytes());
+            Toast.makeText(getActivity(), "Données sauvegardées", Toast.LENGTH_LONG).show();
+            Log.d("ConfirmationFragment", "File saved at: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Erreur lors de la sauvegarde des données", Toast.LENGTH_SHORT).show();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
